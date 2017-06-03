@@ -1,0 +1,5 @@
+<%= bootstrap_form_for @announcement, :url=> user_announcements_path,:method=>:post do |user_data| %>
+    <p class="h4">Department not listed there ? New one here : <%= link_to "New a department", new_user_department_path, :method=>:get,:class=>"btn btn-info" %></p>
+    <%= render :partial=>"form" ,:locals=>{:data=>user_data} %>
+    <%= user_data.submit "Create", class:'btn btn-success'%>
+<% end %>

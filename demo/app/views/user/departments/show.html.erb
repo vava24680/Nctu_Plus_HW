@@ -1,0 +1,12 @@
+<p class="h3" style="color:Blue">
+    Department : <%= @department.d_name %>
+</p>
+<p style="font-size: 2rem;color:Red">
+    Update_Date : <%= @department.updated_at.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<p style="font-size: 2rem">
+    Create_Date &nbsp: <%= @department.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<p>
+    <%= link_to "Back to Department index",user_departments_path, :method=>:get, :class=>"btn btn-info btn-lg"%>
+</p>

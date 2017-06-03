@@ -1,0 +1,7 @@
+<%= bootstrap_form_for @department,:url=>user_departments_path, :method=>:post do |user_data| %>
+	<br />
+	<span class="h4">New a Department~~~</span>
+	<br />
+	<%= render :partial=>"form",:locals=>{:data=>user_data}%>
+    <%= user_data.submit "Create",:class=>"btn btn-success" %>
+<% end %>

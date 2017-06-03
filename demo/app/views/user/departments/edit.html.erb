@@ -1,0 +1,4 @@
+<%= bootstrap_form_for @department, :url=>user_department_path,:method=>:patch do |user_data| %>
+    <%= render :partial=>"form", :locals=>{:data=>user_data} %>
+    <%= user_data.submit "Update", :class=>"btn btn-success" %>
+<% end %>

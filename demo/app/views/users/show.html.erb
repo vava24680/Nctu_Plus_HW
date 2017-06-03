@@ -1,0 +1,18 @@
+<p class="h3">
+    ID : <%= @user.id %>
+</p>
+<p class="h3">
+    Name : <%= @user.name %>
+</p>
+<p class="h3">
+    Email : <%= @user.email %>
+</p>
+<p style="font-size: 2rem;color:Red">
+    Update_Date : <%= @user.updated_at.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<p style="font-size: 2rem">
+    Create_Date &nbsp: <%= @user.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<nav class="navbar">
+    <%= link_to "Go announcements index page", user_announcements_path ,:class=>"btn btn-info navbar-btn btn-lg"%>
+</nav>

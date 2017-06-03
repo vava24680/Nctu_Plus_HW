@@ -1,0 +1,13 @@
+<br />
+<%= data.label :d_name, "Name" %>
+<%= data.text_field :d_name,hide_label:true %>
+
+<% if @department.errors.any? %>
+    <ul>
+        <% @department.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

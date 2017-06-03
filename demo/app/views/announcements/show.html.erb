@@ -1,0 +1,31 @@
+<p style="color : Green;">
+    <%= flash[:notice] %>
+</p>
+<span style="font-size: 3rem">Announcement Title : <%= @announcement.title %></span>
+<br/>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <tr class="h4">
+            <td>
+                Department :
+            </td>
+            <td>
+                <%= Department.find(@announcement.department_id).d_name %>
+            </td>
+        </tr>
+        <tr class="h4">
+            <td colspan="2">
+                <%= simple_format(@announcement.content) %>
+            </td>
+        </tr>
+    </table>
+</div>
+<p style="font-size: 2rem;color: blue">
+    <%= User.find_by(:id=>@announcement.user_id).name%> Posted it at <%= @announcement.created_at.localtime.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<p style="font-size: 2rem;color:Red">
+    Update_Date : <%= @announcement.updated_at.localtime.strftime("%Y/%m/%d %H:%M:%S") %>
+</p>
+<p>
+    <%= link_to "Back to index", announcements_path,:class=>"btn btn-primary btn-lg" %>
+</p>

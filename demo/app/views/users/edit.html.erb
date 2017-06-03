@@ -1,0 +1,15 @@
+<%= bootstrap_form_for @user, :url=>user_path(@user), :method=>:patch do |user_data| %>
+	<br />
+	<%= user_data.text_field :name%>
+	<%= user_data.text_field :email%>
+	<%= user_data.submit "Update",:class=>"btn btn-primary" %>
+<% end %>
+<% if @user.errors.any? %>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

@@ -1,0 +1,5 @@
+<%= bootstrap_form_for @user, :url=>users_path,:method=>:post do |user_data| %>
+<%= render :partial=>"form", :locals=>{:data=>user_data} %>
+<br />
+<%= user_data.submit "Create new user",:class=>"btn btn-success"%>
+<% end %>

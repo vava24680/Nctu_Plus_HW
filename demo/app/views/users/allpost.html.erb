@@ -1,0 +1,50 @@
+<nav class="navbar navbar-link">
+    <% if logged_in%>
+        <span style="font-size: 2rem">Hello, <%= current_user.name%></span>
+        <br />
+        <div class="btn-group btn-group-lg">
+            <%= link_to "Edit profile", edit_user_path(current_user), class:'btn btn-success'%>
+            <%= link_to "Show profile", user_path(current_user), class:'btn btn-info' %>
+            <%= link_to "Log Out", login_url,:method=>:delete, class:'btn btn-danger' %>
+        </div>
+    <% else %>
+        <%= link_to "Login", login_url, :class=>'btn btn-info'%>
+    <% end %>
+</nav>
+<p class="h2" style="color:Blue;">Below are what you have posted.</p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover h4">
+      <tr>
+        <td>Updated Date</td>
+        <td>Title</td>
+        <td>Department</td>
+    	<td>Options</td>
+    	</td>
+      </tr>
+      <% @announcements.each do |announcement| %>
+          <tr>
+              <td>
+                  <%= announcement.updated_at.localtime.strftime("%Y/%m/%d %H:%M:%S") %>
+              </td>
+              <td>
+                  <%= link_to announcement.title, user_announcement_path(announcement), :method=>:get %>
+              </td>
+              <td>
+                  <%= Department.find(announcement.department_id).d_name %>
+              </td>
+              <td>
+                  <% if session[:user_id]==announcement.user_id %>
+                      <div class="btn-group">
+                          <%= link_to "Edit", edit_user_announcement_path(announcement), class:'btn btn-success'%>
+                          <%= link_to "Delete", user_announcement_path(announcement), :method=>:delete,:data=>{:confirm=>"Are you sure ?"}, class:'btn btn-danger'%>
+                      </div>
+                  <% else %>
+                          Not available
+                  <% end %>
+              </td>
+          </tr>
+      <% end %>
+    </table>
+</div>
+<span><%= link_to "New Announcement", new_user_announcement_path,  class:'btn btn-primary btn-lg' %></span>
+<span><%= link_to "Back to announcements manage page", user_announcements_url, :class=>"btn btn-info btn-lg" %></span>

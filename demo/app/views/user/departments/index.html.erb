@@ -1,0 +1,42 @@
+<span class="h2" style="color:Blue;"><%= flash[:notice] %></span>
+<span class="h2" style="color:Red;"><%= flash[:alert] %></span>
+<nav class="navbar navbar-link">
+    <% if logged_in%>
+        <span style="font-size: 2rem">Hello, <%= @current_user.name%></span>
+        <br />
+        <div class="btn-group btn-group-lg">
+            <%= link_to "Edit profile", edit_user_path(current_user), class:'btn btn-success'%>
+            <%= link_to "Show profile", user_path(current_user), class:'btn btn-info' %>
+            <%= link_to "Log Out", login_url,:method=>:delete, class:'btn btn-danger' %>
+        </div>
+    <% else %>
+        <br />
+        <%= link_to "Login", login_url, :class=>"btn btn-info "%>
+    <% end %>
+</nav>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover h4">
+        <tr>
+            <td>Department Name</td>
+            <td>Options</td>
+        </tr>
+        <% @departments.each do |department| %>
+        <tr>
+            <td>
+                <%= department.d_name %>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <%= link_to "Show", user_department_path(department), :method=>:get, :class=>"btn btn-info" %>
+                    <%= link_to "Edit", edit_user_department_path(department), :method=>:get, :class=>"btn btn-success"%>
+                    <%= link_to "Delete",user_department_path(department) , :method=>:delete,:data=>{:confirm=>"Are you sure ?"}, :class=>"btn btn-danger"%>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<div class="btn-group">
+    <%= link_to "New Department", new_user_department_path,:method=>:get, :class=>"btn btn-primary btn-lg" %>
+    <%= link_to "Back to Announcements Manage Page", user_announcements_url,:method=>:get, :class=>"btn btn-info btn-lg" %>
+</div>

@@ -1,0 +1,14 @@
+<%= data.text_field :name %>
+<%= data.text_field :email %>
+<%= data.text_field :account %>
+<%= data.password_field :password, help: "Must be at least 6 characters long"  %>
+<%= data.password_field :password_confirmation %>
+<% if @user.errors.any? %>
+    <ul class="h4">
+        <% @user.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

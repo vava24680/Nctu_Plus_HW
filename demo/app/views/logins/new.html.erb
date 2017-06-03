@@ -1,0 +1,15 @@
+<p class="h3" style="color:Blue">
+    Log-in
+</p>
+<p style="color:Red;font-size:2.5rem">
+    <%= flash[:alert] %>
+</p>
+<%= bootstrap_form_for :session, :url=>login_path, :method=>:post do |input_data| %>
+    <%= input_data.text_field :account %>
+    <br />
+    <%= input_data.password_field :password %>
+    <%= input_data.submit "Log in",:class=>"btn btn-success btn-lg" %>
+<% end %>
+<br />
+<span class="h3">No account?</span>
+<%= link_to "Sign up now~", new_user_url,:class=>"btn btn-info btn-lg" %>

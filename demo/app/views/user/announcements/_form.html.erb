@@ -1,0 +1,16 @@
+<br />
+<%= data.collection_select  :department_id,Department.all, :id, :d_name, :prompt=>true, :class=>"bootstrap"%>
+<br/>
+<%= data.text_field :title %>
+<br/>
+<%= data.text_area :content %>
+<br/>
+<% if @announcement.errors.any? %>
+    <ul>
+        <% @announcement.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>
